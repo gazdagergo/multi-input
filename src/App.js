@@ -5,6 +5,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 
 class App extends Component {
+  state = {
+    inputValues: [
+      {id: 'aaa', value: 'bbb'},
+      {id: 'ccc', value: 'bbb'},
+    ]
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -15,7 +22,9 @@ class App extends Component {
             showMenuIconButton={ false }
           />
           <div className="App-wrapper">
-            <MultiInput />
+            <MultiInput
+              values={ this.state.inputValues }
+            />
           </div>
         </div>
       </MuiThemeProvider>

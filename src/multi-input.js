@@ -5,23 +5,18 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 class MultiInput extends React.Component {
   static propTypes = {
-    toggleinput: PropTypes.func.isRequired,
-    updateinput: PropTypes.func.isRequired,
-    removeinput: PropTypes.func.isRequired,
+    values: PropTypes.shape({
+      id: PropTypes.string,
+      value: PropTypes.string,
+    })
   }
-    
-  state = {
-    inputs: [
-      {id: 'aaa', text: 'bbb'},
-      {id: 'ccc', text: 'bbb'},
-    ]
-  }
+
   render() {
     return (
       <div className="multi-input-wrapper">
         <Card className="multi-input">
           <List>
-            {this.state.inputs.map(input =>
+            {this.props.values.map(input =>
                 <ListItem
                   key={ input.id }
                   rightToggle={ <CloseIcon /> }
@@ -29,7 +24,7 @@ class MultiInput extends React.Component {
                   <TextField
                     floatingLabelText="test attribute"
                     floatingLabelFixed={true}
-                    defaultValue={ this.props.text }
+                    defaultValue={ input.value }
                   />        
               </ListItem>
             )}

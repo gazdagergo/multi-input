@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, Card } from 'material-ui';
+import { List, Card, ListItem, TextField } from 'material-ui';
+import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 class MultiInput extends React.Component {
   static propTypes = {

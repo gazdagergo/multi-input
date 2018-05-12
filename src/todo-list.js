@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Card } from 'material-ui';
 
-class TodoList extends React.Component {
+class MultiInput extends React.Component {
   static propTypes = {
     toggleTodo: PropTypes.func.isRequired,
     updateTodo: PropTypes.func.isRequired,
@@ -10,17 +10,17 @@ class TodoList extends React.Component {
   }
     
   state = {
-    todos: [
+    inputs: [
       {id: 'aaa', text: 'bbb'},
       {id: 'ccc', text: 'bbb'},
     ]
   }
   render() {
     return (
-      <div className="todo-list-wrapper">
-        <Card className="todo-list">
+      <div className="multi-input-wrapper">
+        <Card className="multi-input">
           <List>
-            {this.state.todos.map(todo =>
+            {this.state.inputs.map(todo =>
                 <ListItem
                   key={ todo.id }
                   rightToggle={ <CloseIcon /> }
@@ -39,4 +39,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+export default MultiInput;

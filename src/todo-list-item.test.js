@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoListItem from './todo-list-item';
+import TodoListItem from './multi-input-item';
 import { mount, shallow } from 'enzyme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import PropTypes from 'prop-types';
@@ -28,8 +28,8 @@ describe('<TodoListItem />', () => {
 
   it('should show the text', () => {
     const wrapper = shallow(<TodoListItem { ...props } />);
-    expect(wrapper.find('div.todo-list-item-text').exists()).toBe(true); 
-    expect(wrapper.find('div.todo-list-item-text').text()).toBe('waaa');
+    expect(wrapper.find('div.multi-input-item-text').exists()).toBe(true); 
+    expect(wrapper.find('div.multi-input-item-text').text()).toBe('waaa');
   });
 
   it('checkbox should show the completed prop', () => {

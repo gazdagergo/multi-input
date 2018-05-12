@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoList from './todo-list';
+import TodoList from './multi-input';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 

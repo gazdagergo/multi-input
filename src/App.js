@@ -6,11 +6,14 @@ import { AppBar } from 'material-ui';
 
 class App extends Component {
   state = {
-    inputValues: [
-      {id: 'aaa', value: 'bbb'},
-      {id: 'ccc', value: 'bbb'},
-    ]
+    inputValues: ['aff', 'tdd']
   }
+
+  handleInputChange = inputValues => {
+    this.setState({ inputValues })
+    console.log(inputValues); // eslint-disable-line no-console
+  }
+  
 
   render() {
     return (
@@ -18,12 +21,13 @@ class App extends Component {
         <div className="App">
           <AppBar
             className="app-bar"
-            title="Tennivalók"
+            title="Multi Input Demo App"
             showMenuIconButton={ false }
           />
           <div className="App-wrapper">
             <MultiInput
               values={ this.state.inputValues }
+              onChange={ this.handleInputChange }
             />
           </div>
         </div>

@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Card } from 'material-ui';
-import TodoListItem from './todo-list-item';
 
 class TodoList extends React.Component {
   static propTypes = {
@@ -22,13 +21,16 @@ class TodoList extends React.Component {
         <Card className="todo-list">
           <List>
             {this.state.todos.map(todo =>
-              <Fragment key={todo.id}>
-                <TodoListItem
-                  {...todo}
-                  onUpdate={text => this.handleUpdate(todo.id, text)}
-                  onRemove={() => this.handleRemove(todo.id)}
-                />
-              </Fragment>
+                <ListItem
+                  key={ todo.id }
+                  rightToggle={ <CloseIcon /> }
+                >
+                  <TextField
+                    floatingLabelText="test attribute"
+                    floatingLabelFixed={true}
+                    defaultValue={ this.props.text }
+                  />        
+              </ListItem>
             )}
           </List>
         </Card>

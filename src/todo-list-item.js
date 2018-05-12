@@ -9,7 +9,6 @@ import {
 } from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { grey400 } from 'material-ui/styles/colors';
-import TodoDialog from './todo-dialog';
 
 const iconButtonElement = (
   <IconButton
@@ -32,11 +31,6 @@ class TodoListItem extends React.Component {
   state = {
     isEditing: false,
   };
-
-  handleUpdate = dialogInputValue => {
-    this.setState({ isEditing: false });
-    this.props.onUpdate(dialogInputValue);
-  }
 
   render() {
     return (
@@ -69,13 +63,6 @@ class TodoListItem extends React.Component {
         <div className="todo-list-item-text">
           { this.props.text }
         </div>
-        <TodoDialog 
-          title="Tennivaló szerkesztése"
-          onClose={ () => this.setState({ isEditing: false }) }
-          open={ this.state.isEditing }
-          defaultValue={ this.props.text }
-          onSave={ this.handleUpdate }
-        />
       </ListItem>
     );
   }

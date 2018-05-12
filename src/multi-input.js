@@ -6,7 +6,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 class MultiInput extends React.Component {
   static propTypes = {
     values: PropTypes.arrayOf(PropTypes.string),
-      onChange: PropTypes.func,
+    onChange: PropTypes.func,
   }
 
   state = {
@@ -21,6 +21,14 @@ class MultiInput extends React.Component {
     this.props.onChange(newValues);
   }
 
+  handleRemove = index => {
+    const prevValues = [ ...this.props.values];
+    const newValues = prevValues.filter((prevValue, prevIndex) => (
+      prevIndex !== index
+    ))
+    this.props.onChange(newValues);
+  }
+
   render() {
     return (
       <div className="multi-input-wrapper">
@@ -30,7 +38,7 @@ class MultiInput extends React.Component {
             {this.props.values.map((value, i) =>
               <ListItem
                 key={ i }
-                rightToggle={ <CloseIcon /> }
+                rightToggle={ <CloseIcon onClick={ () => this.handleRemove(i) } /> }
               >
                 <TextField
                   floatingLabelText="test attribute"

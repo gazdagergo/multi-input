@@ -5,10 +5,8 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 class MultiInput extends React.Component {
   static propTypes = {
-    values: PropTypes.shape({
-      value: PropTypes.string,
+    values: PropTypes.arrayOf(PropTypes.string),
       onChange: PropTypes.func,
-    })
   }
 
   state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoList from './multi-input';
+import MultiInput from './multi-input';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 
@@ -15,7 +15,7 @@ class App extends Component {
             showMenuIconButton={ false }
           />
           <div className="App-wrapper">
-            <TodoList />
+            <MultiInput />
           </div>
         </div>
       </MuiThemeProvider>

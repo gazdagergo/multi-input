@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { List, Card, Divider } from 'material-ui';
+import { List, Card } from 'material-ui';
 import TodoListItem from './todo-list-item';
 
 class TodoList extends React.Component {
@@ -21,14 +21,13 @@ class TodoList extends React.Component {
       <div className="todo-list-wrapper">
         <Card className="todo-list">
           <List>
-            {this.state.todos.map((todo, i) =>
+            {this.state.todos.map(todo =>
               <Fragment key={todo.id}>
                 <TodoListItem
                   {...todo}
                   onUpdate={text => this.handleUpdate(todo.id, text)}
                   onRemove={() => this.handleRemove(todo.id)}
                 />
-                { this.state.todos.length > i + 1 && <Divider /> }
               </Fragment>
             )}
           </List>

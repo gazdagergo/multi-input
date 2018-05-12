@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, Card, ListItem, TextField } from 'material-ui';
+import { Card, CardTitle, List, ListItem, TextField } from 'material-ui';
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 class MultiInput extends React.Component {
@@ -27,6 +27,7 @@ class MultiInput extends React.Component {
     return (
       <div className="multi-input-wrapper">
         <Card className="multi-input">
+          <CardTitle title="test" />        
           <List>
             {this.props.values.map((value, i) =>
               <ListItem

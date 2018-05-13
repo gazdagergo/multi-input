@@ -51,18 +51,20 @@ class MultiInput extends React.Component {
   }
 
   handleSave = () => {
-    if (this.state.newValue) {
-      this.handleAddNew(() => this.props.onChange(this.state.values));
-    } else {
-      this.props.onChange(this.state.values);
-    }  
+    this.props.onChange(this.state.values);
   }
 
-  handleAddNew = callback => {
+  handleAddNew = e => {
+    const { key } = e;
+    const { length } = this.state.values;
     this.setState(prevState => {
-      const values = prevState.values.concat(this.state.newValue);
-      return { values, newValue: '' };
-    }, callback && (() => callback()));
+      const values = prevState.values.concat(key);
+      return { values };
+    }, () => this['input' + length].focus());
+  }
+
+  setInputRef = (ref, i) => {
+    this['input' + i] = ref;
   }
 
   render() {
@@ -89,6 +91,9 @@ class MultiInput extends React.Component {
                     value={ value }
                     onChange={ e => this.handleChange(i, e.target.value) }
                     fullWidth
+                    ref={ ref => {
+                      this.setInputRef(ref, i);
+                    } }
                   />
                 </ListItem>
               )}
@@ -100,7 +105,7 @@ class MultiInput extends React.Component {
                   hintText="test attribute"
                   fullWidth
                   onChange={ e => this.setState({ newValue: e.target.value }) }
-                  onKeyPress={ e => e.key === 'Enter' && this.handleAddNew() }
+                  onKeyPress={ this.handleAddNew }
                   value={ this.state.newValue }
 
                 />

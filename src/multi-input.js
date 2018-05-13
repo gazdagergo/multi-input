@@ -19,7 +19,8 @@ class MultiInput extends React.Component {
   }
 
   state = {
-    values: null
+    values: null,
+    newValue: '',
   }
 
   static getDerivedStateFromProps(nextProps) {
@@ -46,7 +47,15 @@ class MultiInput extends React.Component {
   }
 
   handleSave = () => {
-    this.props.onChange(this.state.values);
+    this.handleAddNew(() => this.props.onChange(this.state.values));
+  }
+
+  handleAddNew = callback => {
+    if (!this.state.newValue) return;
+    this.setState(prevState => {
+      const values = prevState.values.concat(this.state.newValue);
+      return { values, newValue: '' };
+    }, callback && (() => callback()));
   }
 
   render() {
@@ -77,6 +86,19 @@ class MultiInput extends React.Component {
                     />
                   </ListItem>
                 )}
+                <ListItem
+                  className="multi-input-list-item multi-input-list-item-add"
+                  disabled
+                >
+                  <TextField
+                    hintText="test attribute"
+                    fullWidth
+                    onChange={ e => this.setState({ newValue: e.target.value }) }
+                    onKeyPress={ e => e.key === 'Enter' && this.handleAddNew() }
+                    value={ this.state.newValue }
+
+                  />
+                </ListItem>                
               </List>
             </div>
           </div>

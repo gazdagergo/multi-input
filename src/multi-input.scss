@@ -29,6 +29,11 @@
   &-list-item {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+
+    &-add {
+      margin-top: 22px;
+      margin-right: 54px;
+    }
   }
 
   &-card-actions {

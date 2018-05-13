@@ -1,13 +1,19 @@
 .multi-input {
+  
   & > div {
     display: flex;
-    @media (max-width: 760px) {
-      display: block;
-    }    
+    flex-direction: column; 
   }
 
   &-card-title {
     flex: 1;
+  }
+
+  &-card-outer {
+    display: flex;
+    @media (max-width: 760px) {
+      display: block;
+    }   
   }
 
   &-card-inner {
@@ -23,5 +29,13 @@
   &-list-item {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+
+  &-card-actions {
+    background: #E9F0FD;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid lightgray;
+    margin-top: 32px;
   }
 }

@@ -15,7 +15,11 @@ import './multi-input.css';
 class MultiInput extends React.Component {
   static propTypes = {
     values: PropTypes.arrayOf(PropTypes.string),
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    values: [],
   }
 
   state = {
@@ -68,41 +72,41 @@ class MultiInput extends React.Component {
         <div className="multi-input-card-outer">
           <CardTitle subtitle="Test" className="multi-input-card-title" />
             <List className="multi-input-list">
-                {this.state.values.map((value, i) =>
-                  <ListItem
-                    key={ i }
-                    className="multi-input-list-item"
-                    rightToggle={(
-                      <CloseIcon
-                        className="multi-input-delete"
-                        onClick={ () => this.handleRemove(i) }
-                      />
-                    )}
-                  >
-                    <TextField
-                      floatingLabelText="test attribute"
-                      floatingLabelFixed={true}
-                      value={ value }
-                      onChange={ e => this.handleChange(i, e.target.value) }
-                      fullWidth
-                    />
-                  </ListItem>
-                )}
+              {this.state.values.map((value, i) =>
                 <ListItem
-                  className="multi-input-list-item multi-input-list-item-add"
-                  disabled
+                  key={ i }
+                  className="multi-input-list-item multi-input-list-item-existing"
+                  rightToggle={(
+                    <CloseIcon
+                      className="multi-input-delete"
+                      onClick={ () => this.handleRemove(i) }
+                    />
+                  )}
                 >
                   <TextField
-                    hintText="test attribute"
+                    floatingLabelText="test attribute"
+                    floatingLabelFixed={true}
+                    value={ value }
+                    onChange={ e => this.handleChange(i, e.target.value) }
                     fullWidth
-                    onChange={ e => this.setState({ newValue: e.target.value }) }
-                    onKeyPress={ e => e.key === 'Enter' && this.handleAddNew() }
-                    value={ this.state.newValue }
-
                   />
-                </ListItem>                
-              </List>
-            </div>
+                </ListItem>
+              )}
+              <ListItem
+                className="multi-input-list-item multi-input-list-item-add"
+                disabled
+              >
+                <TextField
+                  hintText="test attribute"
+                  fullWidth
+                  onChange={ e => this.setState({ newValue: e.target.value }) }
+                  onKeyPress={ e => e.key === 'Enter' && this.handleAddNew() }
+                  value={ this.state.newValue }
+
+                />
+              </ListItem>                
+            </List>
+          </div>
           <CardActions className="multi-input-card-actions">
             <FlatButton label="Cancel" disabled />
             <FlatButton label="Save" onClick={ this.handleSave } primary />

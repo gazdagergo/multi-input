@@ -98,11 +98,12 @@ describe('<MultiInput />', () => {
     expect(wrapper.state().values).toMatchObject(['v6', 'v7']);
 
     const input = wrapper.find('div.multi-input-list-item-add').children().find('input');
-    // input.simulate('click');
-    // input.simulate('keyDown', { key: 'v' });
-    input.simulate('change', { target: { value: 'Hello' } })
+    input.simulate('change', { target: { value: 'v8' } })
 
-    console.log(wrapper.state());
+    let inputs = findInputs(wrapper);
 
+    expect(inputs.get(0).props.value).toBe('v6');
+    expect(inputs.get(1).props.value).toBe('v7');
+    expect(inputs.get(2).props.value).toBe('v8');
   });
 })

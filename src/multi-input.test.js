@@ -85,4 +85,24 @@ describe('<MultiInput />', () => {
 
     expect(mockCallback.mock.calls[0][0]).toMatchObject(['v4', 'v5']);
   });
+
+  it('Add new item: simply clicking into the empty input and typing into it', () => {
+    const mockCallback = jest.fn();
+
+    const props = {
+      onChange: mockCallback,
+      values: ['v6', 'v7'],
+    };
+
+    const wrapper = mountWithContext(<MultiInput { ...props } />);
+    expect(wrapper.state().values).toMatchObject(['v6', 'v7']);
+
+    const input = wrapper.find('div.multi-input-list-item-add').children().find('input');
+    // input.simulate('click');
+    // input.simulate('keyDown', { key: 'v' });
+    input.simulate('change', { target: { value: 'Hello' } })
+
+    console.log(wrapper.state());
+
+  });
 })

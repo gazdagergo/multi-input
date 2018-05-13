@@ -47,11 +47,14 @@ class MultiInput extends React.Component {
   }
 
   handleSave = () => {
-    this.handleAddNew(() => this.props.onChange(this.state.values));
+    if (this.state.newValue) {
+      this.handleAddNew(() => this.props.onChange(this.state.values));
+    } else {
+      this.props.onChange(this.state.values);
+    }  
   }
 
   handleAddNew = callback => {
-    if (!this.state.newValue) return;
     this.setState(prevState => {
       const values = prevState.values.concat(this.state.newValue);
       return { values, newValue: '' };

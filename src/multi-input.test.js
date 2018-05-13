@@ -49,8 +49,6 @@ describe('<MultiInput />', () => {
 
     expect(inputs.get(0).props.value).toBe('v2');
     expect(inputs.get(1).props.value).toBe('v3');
-    // console.log(wrapper.instance());
-    
   });
 
   it('Delete items: clicking on the X', () => {
@@ -71,5 +69,20 @@ describe('<MultiInput />', () => {
 
     expect(inputs.get(0).props.value).toBe('v0');
     expect(inputs.get(1)).toBe(undefined);
+  });
+
+  it('onChange should be called with an array of the actual items', () => {
+    const mockCallback = jest.fn();
+
+    const props = {
+      onChange: mockCallback,
+      values: ['v4', 'v5'],
+    };
+
+    const wrapper = mountWithContext(<MultiInput { ...props } />);
+    const saveButton = wrapper.find('button.multi-input-save');
+    saveButton.simulate('click');
+
+    expect(mockCallback.mock.calls[0][0]).toMatchObject(['v4', 'v5']);
   });
 })

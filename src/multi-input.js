@@ -109,7 +109,7 @@ class MultiInput extends React.Component {
           </div>
           <CardActions className="multi-input-card-actions">
             <FlatButton label="Cancel" disabled />
-            <FlatButton label="Save" onClick={ this.handleSave } primary />
+            <FlatButton label="Save" className="multi-input-save" onClick={ this.handleSave } primary />
           </CardActions>            
         </Card>
       </div>

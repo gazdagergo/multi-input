@@ -67,8 +67,7 @@ class MultiInput extends React.Component {
         <Card className="multi-input">
         <div className="multi-input-card-outer">
           <CardTitle subtitle="Test" className="multi-input-card-title" />
-            <div className="multi-input-card-inner">
-              <List>
+            <List className="multi-input-list">
                 {this.state.values.map((value, i) =>
                   <ListItem
                     key={ i }
@@ -104,7 +103,6 @@ class MultiInput extends React.Component {
                 </ListItem>                
               </List>
             </div>
-          </div>
           <CardActions className="multi-input-card-actions">
             <FlatButton label="Cancel" disabled />
             <FlatButton label="Save" onClick={ this.handleSave } primary />

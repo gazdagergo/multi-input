@@ -22,20 +22,27 @@ class MultiInput extends React.Component {
     values: null
   }
 
+  static getDerivedStateFromProps(nextProps) {
+    const { values } = nextProps;
+    return { values };
+  }
+
   handleChange = (index, newValue) => {
-    const prevValues = [ ...this.props.values];
-    const newValues = prevValues.map((prevValue, prevIndex) => (
-      prevIndex === index ? newValue : prevValue
-    ));
-    this.props.onChange(newValues);
+    this.setState(prevState => {
+      const values = prevState.values.map((prevValue, prevIndex) => (
+        prevIndex === index ? newValue : prevValue
+      ));
+      return { values };      
+    });
   }
 
   handleRemove = index => {
-    const prevValues = [ ...this.props.values];
-    const newValues = prevValues.filter((prevValue, prevIndex) => (
-      prevIndex !== index
-    ))
-    this.props.onChange(newValues);
+    this.setState(prevState => {
+      const values = prevState.values.filter((prevValue, prevIndex) => (
+        prevIndex !== index
+      ))
+      return { values };      
+    });    
   }
 
   render() {
@@ -46,7 +53,7 @@ class MultiInput extends React.Component {
           <CardTitle subtitle="Test" className="multi-input-card-title" />
             <div className="multi-input-card-inner">
               <List>
-                {this.props.values.map((value, i) =>
+                {this.state.values.map((value, i) =>
                   <ListItem
                     key={ i }
                     className="multi-input-list-item"

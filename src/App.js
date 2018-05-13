@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import MultiInput from './multi-input';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
@@ -24,7 +23,7 @@ class App extends Component {
             title="Multi Input Demo App"
             showMenuIconButton={ false }
           />
-          <div className="App-wrapper">
+          <div className="app-wrapper">
             <MultiInput
               values={ this.state.inputValues }
               onChange={ this.handleInputChange }

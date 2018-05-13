@@ -1,0 +1,27 @@
+.multi-input {
+  & > div {
+    display: flex;
+    @media (max-width: 760px) {
+      display: block;
+    }    
+  }
+
+  &-card-title {
+    flex: 1;
+  }
+
+  &-card-inner {
+    flex: 3;
+  }
+
+  &-delete {
+    top: unset !important;
+    bottom: 8px !important;
+    color: grey !important;
+  }
+
+  &-list-item {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

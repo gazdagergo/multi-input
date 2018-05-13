@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardTitle, List, ListItem, TextField } from 'material-ui';
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import './multi-input.css';
 
 class MultiInput extends React.Component {
   static propTypes = {
@@ -33,22 +34,31 @@ class MultiInput extends React.Component {
     return (
       <div className="multi-input-wrapper">
         <Card className="multi-input">
-          <CardTitle title="test" />        
-          <List>
-            {this.props.values.map((value, i) =>
-              <ListItem
-                key={ i }
-                rightToggle={ <CloseIcon onClick={ () => this.handleRemove(i) } /> }
-              >
-                <TextField
-                  floatingLabelText="test attribute"
-                  floatingLabelFixed={true}
-                  value={ value }
-                  onChange={ e => this.handleChange(i, e.target.value) }
-                />        
-              </ListItem>
-            )}
-          </List>
+          <CardTitle subtitle="Test" className="multi-input-card-title" />
+          <div className="multi-input-card-inner">  
+            <List>
+              {this.props.values.map((value, i) =>
+                <ListItem
+                  key={ i }
+                  className="multi-input-list-item"
+                  rightToggle={(
+                    <CloseIcon
+                      className="multi-input-delete"
+                      onClick={ () => this.handleRemove(i) }
+                    />
+                  )}
+                >
+                  <TextField
+                    floatingLabelText="test attribute"
+                    floatingLabelFixed={true}
+                    value={ value }
+                    onChange={ e => this.handleChange(i, e.target.value) }
+                    fullWidth
+                  />        
+                </ListItem>
+              )}
+            </List>
+          </div>
         </Card>
       </div>
     );

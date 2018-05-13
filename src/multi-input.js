@@ -45,6 +45,10 @@ class MultiInput extends React.Component {
     });    
   }
 
+  handleSave = () => {
+    this.props.onChange(this.state.values);
+  }
+
   render() {
     return (
       <div className="multi-input-wrapper">
@@ -78,7 +82,7 @@ class MultiInput extends React.Component {
           </div>
           <CardActions className="multi-input-card-actions">
             <FlatButton label="Cancel" disabled />
-            <FlatButton label="Save" primary />
+            <FlatButton label="Save" onClick={ this.handleSave } primary />
           </CardActions>            
         </Card>
       </div>

@@ -1,0 +1,34 @@
+.multi-input > div {
+  display: flex;
+  flex-direction: column; }
+
+.multi-input-card-title {
+  flex: 1; }
+
+.multi-input-card-outer {
+  display: flex; }
+  @media (max-width: 760px) {
+    .multi-input-card-outer {
+      display: block; } }
+
+.multi-input-list {
+  flex: 3; }
+
+.multi-input-delete {
+  top: unset !important;
+  bottom: 8px !important;
+  color: grey !important; }
+
+.multi-input-list-item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+  .multi-input-list-item-add {
+    margin-top: 22px;
+    margin-right: 54px; }
+
+.multi-input-card-actions {
+  background: #E9F0FD;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid lightgray;
+  margin-top: 32px; }

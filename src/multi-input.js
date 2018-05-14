@@ -97,6 +97,7 @@ class MultiInput extends React.Component {
                     ref={ ref => {
                       this.setInputRef(ref, i);
                     } }
+                    onKeyPress={ e => e.key === 'Enter' && this.newInput.focus() }
                   />
                 </ListItem>
               )}
